@@ -1,4 +1,4 @@
-name: Polaris Security Scan
+name: Polaris SAST
 "on":
   push:
     branches:
