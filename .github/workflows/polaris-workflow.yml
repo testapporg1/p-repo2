@@ -35,3 +35,4 @@ jobs:
           blackducksca_fixpr_enabled: true
           blackducksca_reports_sarif_create: true
           blackducksca_upload_sarif_report: true
+          
