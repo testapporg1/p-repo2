@@ -1,4 +1,4 @@
-name: Polaris Security Scan
+name: Black Duck Security Scan
 on:
   push:
     branches:
@@ -16,16 +16,22 @@ on:
       - release
   workflow_dispatch: {}
 jobs:
-  polaris:
-    runs-on: ubuntu-latest
+  blackducksca:
+    runs-on: self-hosted
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
-      - name: Polaris Security Scan
-        id: polaris-scan
+      - name: Black Duck Security Scan
+        id: black-duck-security-scan
         uses: blackduck-inc/black-duck-security-scan@SIGINT-3993-updated
         with:
-          polaris_server_url: ${{ vars.POLARIS_URL }}
-          polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-          polaris_assessment_types: SCA, SAST
+          blackducksca_url: ${{ vars.BLACKDUCKSCA_URL }}
+          blackducksca_token: ${{ secrets.BLACKDUCKSCA_TOKEN }}
+          blackducksca_waitForScan: true
+          mark_build_status: failure
           include_diagnostics: true
+          blackducksca_prComment_enabled: true
+          github_token: ${{ secrets.GH_TOKEN }}
+          blackducksca_fixpr_enabled: true
+          blackducksca_reports_sarif_create: true
+          blackducksca_upload_sarif_report: true
