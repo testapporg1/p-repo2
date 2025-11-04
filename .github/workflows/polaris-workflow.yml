@@ -23,9 +23,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Polaris Security Scan
         id: polaris-scan
-        uses: blackduck-inc/black-duck-security-scan@SIGINT-3993-updated
+        uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
         with:
           polaris_server_url: ${{ vars.POLARIS_URL }}
           polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
           polaris_assessment_types: SCA, SAST
           include_diagnostics: true
+          coverity_version: '2023.6.0'
