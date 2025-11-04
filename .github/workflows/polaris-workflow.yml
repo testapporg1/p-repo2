@@ -30,3 +30,4 @@ jobs:
           polaris_assessment_types: SCA, SAST
           include_diagnostics: true
           coverity_version: '2023.6.0'
+          coverity_prComment_enabled: true
