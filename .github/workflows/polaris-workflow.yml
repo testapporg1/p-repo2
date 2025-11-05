@@ -25,8 +25,8 @@ jobs:
         id: polaris-scan
         uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
         with:
-          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
-          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
+          polaris_server_url: 'https://pim.dev.polaris.blackduck.com/'
+          polaris_access_token: 'mvia9pjdnt4ildk86vfm6nl4juci3gpc6lf4di5d9nnkia1753e6l8kbrkp7llcipe0d9aqdicqn0'
           polaris_assessment_types: SCA
           include_diagnostics: true
           coverity_version: '2023.6.0'
