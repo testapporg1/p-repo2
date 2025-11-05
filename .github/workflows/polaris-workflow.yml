@@ -26,7 +26,7 @@ jobs:
         uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
         with:
           polaris_server_url: 'https://pim.dev.polaris.blackduck.com/'
-          polaris_access_token: 'mvia9pjdnt4ildk86vfm6nl4juci3gpc6lf4di5d9nnkia1753e6l8kbrkp7llcipe0d9aqdicqn0'
+          polaris_access_token: 'mvia9pjdnt4ildk86vfm6nl4jsjvj3mqre54btl7vhhokqi1b53kib9glmeodfj0ijn2dsaord3hk'
           polaris_assessment_types: SCA
           include_diagnostics: true
           coverity_version: '2023.6.0'
