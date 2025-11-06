@@ -28,6 +28,6 @@ jobs:
           polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
           polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
           polaris_assessment_types: SAST 
-          polaris_reports_sarif_create: true
+          #polaris_reports_sarif_create: true
           coverity_version: '2025.6.2'
           bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.5rc1/bridge-cli-bundle-3.9.5rc1-macos_arm.zip'
