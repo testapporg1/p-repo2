@@ -31,4 +31,4 @@ jobs:
           polaris_reports_sarif_create: true
           include_diagnostics: true
           #coverity_version: '2025.3.0'
-          bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.4rc1/bridge-cli-bundle-3.9.4rc1-macos_arm.zip'
+          bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.3rc1/bridge-cli-bundle-3.9.3rc1-linux_arm.zip'
