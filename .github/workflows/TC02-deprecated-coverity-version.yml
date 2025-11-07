@@ -27,5 +27,5 @@ jobs:
           polaris_assessment_types: 'SCA,SAST'
           polaris_test_sast_type: 'SAST_FULL'
           polaris_reports_sarif_create: true
-          coverity_version: '2023.6.0'  # Deprecated version (example)
+          coverity_version: '2024.9.1'  # Deprecated version (example)
           bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.5rc1/bridge-cli-bundle-3.9.5rc1-macos_arm.zip'
