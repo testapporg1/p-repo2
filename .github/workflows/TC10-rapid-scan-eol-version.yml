@@ -1,0 +1,34 @@
+# Test Case: Run Polaris SAST-RAPID set Valid EOL Coverity Version
+# Priority: P1
+# Expected: ERROR - Version 2023.9.0 not supported, scan aborted, error with supported versions
+
+name: TC10 - Polaris SAST RAPID with EOL Version
+
+on:
+  push:
+    branches: [main, master, develop, stage, release]
+  pull_request:
+    branches: [main, master, develop, stage, release]
+  workflow_dispatch: {}
+
+jobs:
+  polaris-rapid-scan-eol:
+    name: Rapid Scan with EOL Version
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Polaris SAST Rapid Scan
+        id: polaris-rapid-scan
+        uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
+        continue-on-error: true  # Expected to fail
+        with:
+          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
+          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
+          polaris_assessment_types: 'SCA,SAST'
+          polaris_test_sast_type: 'SAST_RAPID'
+          polaris_reports_sarif_create: true
+          polaris_test_sast_location: 'local'
+          coverity_version: '2023.9.0'  # EOL/Unsupported version
+          bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.5rc1/bridge-cli-bundle-3.9.5rc1-macos_arm.zip'

@@ -1,0 +1,56 @@
+# Test Case: Run Polaris SAST-RAPID set Valid old Coverity Version
+# Priority: P1
+# Expected:
+#   Scan 1 (Full): Old valid version downloaded (C_Old), full scan succeeds
+#   Scan 2 (Rapid): Rapid scan uses old Sigma version (not C_latest for full scan)
+
+name: TC09 - Polaris SAST RAPID with Old Version
+
+on:
+  push:
+    branches: [main, master, develop, stage, release]
+  pull_request:
+    branches: [main, master, develop, stage, release]
+  workflow_dispatch: {}
+
+jobs:
+  polaris-full-scan-old:
+    name: Full Scan with Old Version
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Polaris SAST Full Scan
+        id: polaris-full-scan
+        uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
+        with:
+          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
+          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
+          polaris_assessment_types: 'SCA,SAST'
+          polaris_test_sast_type: 'SAST_FULL'
+          polaris_reports_sarif_create: true
+          polaris_test_sast_location: 'local'
+          coverity_version: '2024.3.0'  # Valid but older version (C_Old)
+          bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.5rc1/bridge-cli-bundle-3.9.5rc1-macos_arm.zip'
+
+  polaris-rapid-scan-old:
+    name: Rapid Scan (Uses Old Sigma)
+    runs-on: self-hosted
+    needs: polaris-full-scan-old
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Polaris SAST Rapid Scan
+        id: polaris-rapid-scan
+        uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
+        with:
+          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
+          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
+          polaris_assessment_types: 'SCA,SAST'
+          polaris_test_sast_type: 'SAST_RAPID'
+          polaris_reports_sarif_create: true
+          polaris_test_sast_location: 'local'
+          # coverity_version: NOT SET - Should use old Sigma version mapped to C_Old
+          bridgecli_download_url: 'https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.9.5rc1/bridge-cli-bundle-3.9.5rc1-macos_arm.zip'
