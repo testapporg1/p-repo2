@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Polaris Security Scan
         id: polaris-scan
-        uses: blackduck-inc/black-duck-security-scan@SIGINT-3342
+        uses: blackduck-inc/black-duck-security-scan@main
         with:
           polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
           polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
