@@ -33,4 +33,4 @@ jobs:
           ## NOTE: Issues matching coverity_policy_view are ignored if set
           coverity_prComment_impacts: 'High,Medium,Low,Audit'
           github_token: ${{ secrets.GH_TOKEN }} # Required when PR comments is enabled
-          bridgecli_download_url: https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.10.0rc5/bridge-cli-bundle-3.10.0rc5-macos_arm.zip
+          bridgecli_download_url: https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.10.0rc5/bridge-cli-bundle-3.10.0rc5-linux64.zip
