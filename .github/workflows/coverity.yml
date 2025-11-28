@@ -22,8 +22,8 @@ jobs:
         id: polaris-scan
         uses: blackduck-inc/black-duck-security-scan@main
         with:
-          polaris_server_url: ${{ vars.POLARIS_URL }}
-          polaris_access_token: ${{ secrets.POLARIS_TOKEN }}
+          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
+          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
           polaris_assessment_types: 'SCA,SAST'
           polaris_test_sast_type: 'SAST_FULL'
           polaris_reports_sarif_create: true
