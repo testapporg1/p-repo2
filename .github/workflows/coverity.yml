@@ -22,10 +22,11 @@ jobs:
         id: polaris-scan
         uses: blackduck-inc/black-duck-security-scan@main
         with:
-          polaris_server_url: ${{ vars.PIM_POLARIS_URL }}
-          polaris_access_token: ${{ secrets.PIM_POLARIS_TOKEN }}
-          polaris_assessment_types: 'SCA,SAST'
-          polaris_test_sast_type: 'SAST_FULL'
+          polaris_server_url: ${{ vars.POLARIS_URL }}
+          polaris_access_token: ${{ secrets.POLARIS_TOKEN }}
+          polaris_assessment_types: 'SAST'
           polaris_reports_sarif_create: true
-          coverity_version: '2025.6.2'  # Valid supported version
-          bridgecli_download_url: https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/3.10.0rc5/bridge-cli-bundle-3.10.0rc5-macos_arm.zip
+          polaris_test_sast_location: hybrid  
+          include_diagnostics: true
+          #coverity_version: '2025.6.2'  # Valid supported version
+          bridgecli_download_url: https://artifactory.tools.duckutil.net/artifactory/clops-local/integrations/bridge/binaries/bridge-cli-bundle/latest/bridge-cli-bundle-macos_arm.zip
